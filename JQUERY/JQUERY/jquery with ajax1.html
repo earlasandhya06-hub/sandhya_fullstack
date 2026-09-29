@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery AJAX Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <h2>AJAX Request Example</h2>
+    
+    <!-- Button to Load Data -->
+    <button id="loadDataBtn">Load Data (GET)</button>
+    
+    <!-- Form to Send Data -->
+    <h3>Send Data (POST)</h3>
+    <form id="postForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <br><br>
+        <button type="submit">Send Data (POST)</button>
+    </form>
+    
+    <!-- Displaying the Results -->
+    <div id="responseDiv"></div>
+
+    <script>
+        $(document).ready(function () {
+
+            // Handle GET request to load data
+            $("#loadDataBtn").click(function () {
+                $.ajax({
+                    url: "https://jsonplaceholder.typicode.com/posts/1", // Sample API
+                    type: "GET",
+                    dataType: "json",
+                    success: function (response) {
+                        // Display title and body of the response
+                        $("#responseDiv").html("<h3>" + response.title + "</h3><p>" + response.body + "</p>");
+                    },
+                    error: function (xhr, status, error) {
+                        $("#responseDiv").html("<p>Error: " + error + "</p>");
+                    }
+                });
+            });
+
+            // Handle POST request to send data
+            $("#postForm").submit(function (event) {
+                event.preventDefault(); // Prevent form from submitting the traditional way
+
+                // Get the value from the input field
+                var username = $("#username").val();
+
+                $.ajax({
+                    url: "https://jsonplaceholder.typicode.com/posts", // Sample API endpoint
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        username: username
+                    },
+                    success: function (response) {
+                        $("#responseDiv").html("<p>Data sent successfully! <b

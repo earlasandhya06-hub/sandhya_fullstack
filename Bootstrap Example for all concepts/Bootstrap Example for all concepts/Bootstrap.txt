@@ -1,0 +1,11 @@
+	-BootStrap-
+
+	Framework for HTML and CSS.         (.js)
+
+	Its completely free. (Opensource)
+	
+	-CDN-
+
+	Content Delivery Network or Content Distribution Network, ...time and performance.
+
+	

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Exception Handling</title>
+</head>
+
+<body>
+
+```
+<h1>JavaScript Exception Handling</h1>
+
+<label>Dividend:</label>
+<input type="text" id="dividend" placeholder="Enter dividend">
+
+<br><br>
+
+<label>Divisor:</label>
+<input type="text" id="divisor" placeholder="Enter divisor">
+
+<br><br>
+
+<button onclick="divide()">Divide</button>
+
+<br><br>
+
+<div id="result"></div>
+
+<script>
+
+    function divide() {
+
+        try {
+
+            var dividend = Number(document.getElementById("dividend").value);
+            var divisor = Number(document.getElementById("divisor").value);
+
+            if (isNaN(dividend) || isNaN(divisor)) {
+                throw "Please enter numbers only";
+            }
+
+            if (divisor == 0) {
+                throw "Cannot divide by zero";
+            }
+
+            var result = dividend / divisor;
+
+            document.getElementById("result").innerHTML =
+                "Result = " + result;
+        }
+
+        catch (error) {
+
+            document.getElementById("result").innerHTML =
+                "Error: " + error;
+        }
+    }
+
+</script>
+```
+
+</body>
+</html>
